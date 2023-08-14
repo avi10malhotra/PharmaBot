@@ -1,0 +1,63 @@
+class PharmacyChatbot:
+    def _init_(self):
+        self.prescriptions = {
+            "12345": {"patient_name": "John Doe", "birthdate": "01-01-1980", "medication": "Aspirin", "dosage": "100mg", "refills": 2},
+            "67890": {"patient_name": "Jane Smith", "birthdate": "02-02-1990", "medication": "Lisinopril", "dosage": "10mg", "refills": 1},
+        }
+
+    def verify_patient(self, prescription_id):
+        print("For security, please verify some details.")
+        name = input("Enter your full name: ")
+        birthdate = input("Enter your birthdate (MM-DD-YYYY): ")
+        
+        if (name == self.prescriptions[prescription_id]["patient_name"] and 
+            birthdate == self.prescriptions[prescription_id]["birthdate"]):
+            return True
+        else:
+            print("Verification failed. Please ensure you're entering correct details.")
+            return False
+
+    def refill_request(self):
+        prescription_id = input("Please enter your prescription ID: ")
+
+        if prescription_id in self.prescriptions:
+            if not self.verify_patient(prescription_id):
+                return
+
+            medication = self.prescriptions[prescription_id]["medication"]
+            dosage = self.prescriptions[prescription_id]["dosage"]
+            refills = self.prescriptions[prescription_id]["refills"]
+
+            if refills > 0:
+                self.prescriptions[prescription_id]["refills"] -= 1
+                print(f"Your refill request for {medication} {dosage} has been processed. "
+                      f"You now have {self.prescriptions[prescription_id]['refills']} refills left.")
+
+                # Ask about delivery options
+                delivery = input("Would you like the medication delivered to your address? (yes/no): ").strip().lower()
+                if delivery == "yes":
+                    print("Great! Your medication will be delivered to your address.")
+                else:
+                    print("Alright! You can pick up your medication from our pharmacy.")
+
+                # Ask for refill reminders
+                reminder = input("Would you like a reminder for your next refill? (yes/no): ").strip().lower()
+                if reminder == "yes":
+                    print("We'll remind you when it's time for your next refill.")
+            else:
+                print(f"You have no refills left for {medication} {dosage}. Please contact your doctor.")
+        else:
+            print("Invalid prescription ID. Please check and try again.")
+
+    def run(self):
+        print("Welcome to Pharmacy Chatbot!")
+        action = input("Would you like to request a refill? (yes/no): ").strip().lower()
+
+        if action == "yes":
+            self.refill_request()
+        else:
+            print("Thank you for using Pharmacy Chatbot. Goodbye!")
+
+if _name_ == "_main_":
+    chatbot = PharmacyChatbot()
+    chatbot.run()
