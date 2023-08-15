@@ -14,7 +14,7 @@ def placeOrder(medicine):
 
 def checkAvailibility(medicine):
     rand = random.randint(0, 1)
-    if  rand:
+    if rand:
         print(f"{medicine} is available at atleast one of our stores. Would you like to place an order for home delivery?\n")
         response = input()
         if response == 'yes':
