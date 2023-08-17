@@ -1,5 +1,7 @@
 #This scenario is to ask users to register if they are not an exisiting user:
 
+from users_database import users
+
 def collect_user_information():
     name = input("Please enter your name: ")
     dob = input("Please enter your date of birth (e.g., YYYY-MM-DD): ")
@@ -7,15 +9,22 @@ def collect_user_information():
     id_number = input("Please enter your ID number: ")
     email = input("Please enter your email address: ")
     phone = input("Please enter your phone number: ")
+    address = input("Please enter your address: ")
+    zip = input("Please enter your zip code: ")
 
     user_info = {
         "Name": name,
         "Date of Birth": dob,
         "ID Type": id_type,
         "ID Number": id_number,
-        "Email": email,
-        "Phone": phone
+        "Email": email, #used as the primary key
+        "Phone": phone,
+        "Address": address,
+        "Zip Code": zip,
+        "Orders": [],
     }
+
+    users.addUser(user_info)
 
     return user_info
 

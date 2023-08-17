@@ -18,7 +18,7 @@ def checkAvailibility(medicine):
         print(f"{medicine} is available at atleast one of our stores. Would you like to place an order for home delivery?\n")
         response = input()
         if response == 'yes':
-            print("Great! You are now being redirect to enter your delivery information and make the payment.\n")
+            print("Great! You are now being redirected to enter your delivery information and make the payment.\n")
         else:
             print("No worries, would you like us to tell you the list of stores where the medicine is available?\n")
             response = input()
