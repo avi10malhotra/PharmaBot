@@ -1,10 +1,11 @@
 import pandas as pd
+from store_locations import JC_locations
+import random
+import nltk
 
 # read the data
 df = pd.read_csv('medicine_dataset.csv', encoding='utf-8')
 
-import nltk
-import random
 
 # set a random seed
 random.seed(1)
@@ -14,7 +15,8 @@ def placeOrder(medicine):
 
 def checkAvailibility(medicine):
     rand = random.randint(0, 1)
-    if rand:
+    # randomly decide if a medicine is available or not
+    if rand > 0.5:
         print(f"{medicine} is available at atleast one of our stores. Would you like to place an order for home delivery?\n")
         response = input()
         if response == 'yes':
@@ -23,14 +25,14 @@ def checkAvailibility(medicine):
             print("No worries, would you like us to tell you the list of stores where the medicine is available?\n")
             response = input()
             if response == 'yes':
-                print("Here is the list of stores where the medicine is available:\n"
-                      + "\t1. Downtown Pharmacy\n"
-                      + "\t2. Saint Catherine Street\n"
-                      + "\t3. Saint Laurent Boulevard\n")
-
+                # randomly select a list of stores where the medicine is available
+                stores = random.sample(JC_locations, random.randint(1, len(JC_locations)))
+                for i in range(len(stores)):
+                    print(f"\t{i+1}. {JC_locations[i]}")
             else:
                 print("No worries, I hope that I answered all your questions! Please let me know if you have any other questions\n")
     else:
+        # suggest alternatives to the medicine, if available
         alternatives = df[df['name'] == medicine][["substitute0", "substitute1", "substitute2", "substitute3", "substitute4"]]
         alternatives = alternatives.values[0].tolist()
 

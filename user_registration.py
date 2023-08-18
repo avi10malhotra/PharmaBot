@@ -2,6 +2,7 @@
 
 from users_database import users
 
+# collects user info and appends the user to the database
 def collect_user_information():
     name = input("Please enter your name: ")
     dob = input("Please enter your date of birth (e.g., YYYY-MM-DD): ")
