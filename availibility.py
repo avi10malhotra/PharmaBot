@@ -10,9 +10,6 @@ df = pd.read_csv('medicine_dataset.csv', encoding='utf-8')
 # set a random seed
 random.seed(1)
 
-def placeOrder(medicine):
-    pass
-
 def checkAvailibility(medicine):
     rand = random.randint(0, 1)
     # randomly decide if a medicine is available or not
@@ -45,26 +42,25 @@ def checkAvailibility(medicine):
         print("We recommend cross-checking with a pharmacist to verify if the medicines can be interchanged\n")
     return
 
-medicine = input("Please enter the medicine you are searching for: \n")
+def is_available(medicine):
+    # search if the medicine is available in the dataset
+    matches = []
+    for med in df['name'].values:
+        if med == medicine:
+            checkAvailibility(med)
+        elif med.startswith(medicine):
+            matches.append(med)
 
-# search if the medicine is available in the dataset
-matches = []
-for med in df['name'].values:
-    if med == medicine:
-        checkAvailibility(med)
-    elif med.startswith(medicine):
-        matches.append(med)
+    if len(matches) == 0:
+        print("Sorry, the medicine you are searching for is not available in our database.")
+    else:
+        print("We found the following matches for your search: ")
+        for match in matches:
+            print(match)
 
-if len(matches) == 0:
-    print("Sorry, the medicine you are searching for is not available in our database.")
-else:
-    print("We found the following matches for your search: ")
-    for match in matches:
-        print(match)
-
-    print("Please select the medicine you are searching for from the list above: ")
-    medicine = input()
-    checkAvailibility(medicine)
+        print("Please select the medicine you are searching for from the list above: ")
+        medicine = input()
+        checkAvailibility(medicine)
 
 
 

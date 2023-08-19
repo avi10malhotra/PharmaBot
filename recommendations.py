@@ -27,9 +27,7 @@ def find_medicine():
     return matches
 
 # searches the medicine database to find the medicine that matches the user's description
-def recommend_medicine():
-    sentence = input("Please describe your symptoms or specify the kind of medicine you are looking for: ")
-
+def recommend_medicine(sentence):
     # Extract keywords from the sentence using RAKE heuristics
     r.extract_keywords_from_text(sentence)
 
@@ -90,8 +88,6 @@ def recommend_medicine():
             Habit Forming: {medicine['Habit Forming']}
             Therapeutic Class: {medicine['Therapeutic Class']}\n
             """)
-
-
 
 
 
