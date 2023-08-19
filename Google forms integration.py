@@ -46,7 +46,7 @@ def main():
         for i, row in enumerate(values, start=1):
             df[i] = row
         df_data = pd.DataFrame.from_dict(df, orient='index', columns=["Timestamp", "Kindly enter your full name", "Please select your government issued ID type:",
-                                                                      "Enter your ID number:", "Date of Birth?", "Email?", "Phone no.","Zip Code:"])
+                                                                      "Enter your ID number:", "Date of Birth?", "Email?", "Phone no.","Zip Code:","Address:"])
         
         display(df_data.iloc[-1:])
     except HttpError as error:
