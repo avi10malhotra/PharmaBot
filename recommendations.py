@@ -1,6 +1,7 @@
 import pandas as pd
 from rake_nltk import Rake
 
+
 # read the data and create the Rake object
 df = pd.read_csv('medicine_dataset.csv', encoding='utf-8')
 r = Rake()

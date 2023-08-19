@@ -11,7 +11,7 @@ from IPython.display import display
 SCOPE = ["https://www.googleapis.com/auth/spreadsheets"]
 SPREADSHEET_ID = "1TXZzfvJvpvGe6v70CvVRe5N8hgi74D0T1Trr91juqyA"
 
-def main():
+def fetch_new_user():
     credentials = None
     
     # Check if token.json file exists
@@ -25,7 +25,7 @@ def main():
             credentials.refresh(Request())
         else:
             # Load credentials using client secrets file
-            flow = InstalledAppFlow.from_client_secrets_file("C:/Users/pc/sadiq.json", SCOPE)
+            flow = InstalledAppFlow.from_client_secrets_file("google_client_id.json", SCOPE)
             credentials = flow.run_local_server(port=0)
         
         # Save the updated credentials to token.json
@@ -41,16 +41,8 @@ def main():
         result = sheet.values().get(spreadsheetId=SPREADSHEET_ID, range="Sheet1!A2:X").execute()
         values = result.get('values', [])
 
-        # Print each row of values
-        df = {}
-        for i, row in enumerate(values, start=1):
-            df[i] = row
-        df_data = pd.DataFrame.from_dict(df, orient='index', columns=["Timestamp", "Kindly enter your full name", "Please select your government issued ID type:",
-                                                                      "Enter your ID number:", "Date of Birth?", "Email?", "Phone no.","Zip Code:","Address:"])
-        
-        display(df_data.iloc[-1:])
+        return values[-1]
     except HttpError as error:
         print(error)
 
-if __name__ == '__main__':
-    main()
+

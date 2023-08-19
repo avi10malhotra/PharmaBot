@@ -1,4 +1,4 @@
-from users_database import prescriptions
+from user_functions import prescriptions
 
 def verify_patient(prescription_id):
     print("For security, please verify some details.")

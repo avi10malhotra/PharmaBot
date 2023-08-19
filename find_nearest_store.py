@@ -1,5 +1,5 @@
 from pgeocode import GeoDistance
-import users_database
+import user_functions
 
 from store_locations import JC_locations
 
@@ -31,7 +31,7 @@ def find_nearest_store():
         password = input("Please enter your password:\n")
 
         # verify user authentication
-        user = users_database.check_login_details(email, password)
+        user = user_functions.check_login_details(email, password)
 
         if user is None:
             print("Sorry, your login details are incorrect. Please retry.")

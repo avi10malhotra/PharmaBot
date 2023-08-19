@@ -1,31 +1,39 @@
-import user_registration
+import user_functions
 import recommendations
 import availibility
 import find_nearest_store
 import order
 import prescription_refill
+import fetch_google_forms
 
 def main():
     print(
     """
         Hello, I PillPal - The Pharma Bot for Jean Coutu. I am here to help you with your needs.\n
-        Please select one of the following options so that I can assist you better:\n
-        \t1. This is my first time here, can you please register me as a user? \n
-        \t2. I am looking for a specific medicine\n
-        \t3. I am feeling unwell and would like to know what medicine I should take\n
-        \t4. I would like to order some medicine and/or get a prescription refill\n
-        \t5. I would like to know the closest JC Pharma store to me.\n
-        \t6. I would like to refill my prescription\n
+        Please select one of the following options so that I can assist you better:
+        \t1. This is my first time here, can you please register me as a user? 
+        \t2. I am looking for a specific medicine
+        \t3. I am feeling unwell and would like to know what medicine I should take
+        \t4. I would like to order some medicine and/or get a prescription refill
+        \t5. I would like to know the closest JC Pharma store to me.
+        \t6. I would like to refill my prescription
         
-        Note: Please press 'Ctrl/Cmd + C' to exit the program at any time 😁
+        Note: Please type 'quit' to exit the program at any time 😁
     """)
 
     while True:
         response = input()
+        if response.__contains__("quit"):
+            print("Thank you for using PillPal! Have a great day!")
+            exit()
         match response:
             case "1":
                 print("Welcome to Jean Coutu! 🥳Please register here: ")
-                user_registration.register_user()
+                is_done = input("Have you filled the Google form? (Y/N) \n")
+                if is_done == "Y":
+                    new_user = fetch_google_forms.fetch_new_user()
+                    if new_user is not None:
+                        user_functions.addUser(new_user)
             case "2":
                 medicine = input("Please enter the medicine you are searching for 🔍: \n")
                 availibility.is_available(medicine)
