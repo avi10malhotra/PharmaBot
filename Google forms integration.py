@@ -5,7 +5,6 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-
 import pandas as pd
 from IPython.display import display
 
@@ -39,7 +38,7 @@ def main():
 
         # Call the Sheets API to get values
         sheet = service.spreadsheets()
-        result = sheet.values().get(spreadsheetId=SPREADSHEET_ID, range="Sheet1!A2:G3").execute()
+        result = sheet.values().get(spreadsheetId=SPREADSHEET_ID, range="Sheet1!A2:X").execute()
         values = result.get('values', [])
 
         # Print each row of values
@@ -47,9 +46,9 @@ def main():
         for i, row in enumerate(values, start=1):
             df[i] = row
         df_data = pd.DataFrame.from_dict(df, orient='index', columns=["Timestamp", "Kindly enter your full name", "Please select your government issued ID type:",
-                                                                      "Enter your ID number:", "Date of Birth?", "Email?", "Phone no."])
+                                                                      "Enter your ID number:", "Date of Birth?", "Email?", "Phone no.","Zip Code:","Address:"])
         
-        display(df_data)
+        display(df_data.iloc[-1:])
     except HttpError as error:
         print(error)
 
