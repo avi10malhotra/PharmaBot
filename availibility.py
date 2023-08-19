@@ -1,23 +1,25 @@
 import pandas as pd
 from store_locations import JC_locations
 import random
-import nltk
+import order
 
 # read the data
 df = pd.read_csv('medicine_dataset.csv', encoding='utf-8')
 
 
 # set a random seed
-random.seed(1)
+random.seed(1234)
 
 def checkAvailibility(medicine):
-    rand = random.randint(0, 1)
+    rand = random.randint(0, 10) / 10
     # randomly decide if a medicine is available or not
     if rand > 0.5:
         print(f"{medicine} is available at atleast one of our stores. Would you like to place an order for home delivery?\n")
         response = input()
         if response == 'yes':
             print("Great! You are now being redirected to enter your delivery information and make the payment.\n")
+            order.place_order()
+            return
         else:
             print("No worries, would you like us to tell you the list of stores where the medicine is available?\n")
             response = input()
@@ -33,7 +35,7 @@ def checkAvailibility(medicine):
         alternatives = df[df['name'] == medicine][["substitute0", "substitute1", "substitute2", "substitute3", "substitute4"]]
         alternatives = alternatives.values[0].tolist()
 
-        print(f"Sorry, unfortunately {medicine} is out of stock"
+        print(f"Sorry, unfortunately {medicine} is out of stock\n"
               + "However we do have the following alternatives available that are popularly used:\n")
         for alt in alternatives:
             if alt != 'nan':

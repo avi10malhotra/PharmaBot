@@ -28,20 +28,20 @@ def find_nearest_store():
     if user_location == 'yes':
         print("Please enter your login details for verification:\n")
         email = input("Please enter your email address:\n")
-        password = input("Please enter your password:\n")
+        id = input("Please enter your identification number:\n")
 
         # verify user authentication
-        user = user_functions.check_login_details(email, password)
+        user = user_functions.check_login_details(email, id)
 
         if user is None:
             print("Sorry, your login details are incorrect. Please retry.")
 
         else:
-            closest_JC = find_closest_JC(user["Zip"], JC_locations.values())
-        print(f"The closest JC Pharma store to you is located at {closest_JC}\n")
+            closest_JC = find_closest_JC(user[-2], JC_locations.keys())
+        print(f"The closest JC Pharma store to you is located at {closest_JC} {JC_locations[closest_JC]}\n")
 
     # the user manually inserts a zip code
     else:
         code = input("Please enter the zip code:\n")
-        closest_JC = find_closest_JC(code, JC_locations.values())
-        print(f"The closest Jean Coutu store to your location ({code}) is located at {closest_JC}\n")
+        closest_JC = find_closest_JC(code, JC_locations.keys())
+        print(f"The closest Jean Coutu store to your location ({code}) is located at {closest_JC} {JC_locations[closest_JC]}\n")

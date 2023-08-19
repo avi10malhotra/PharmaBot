@@ -1,9 +1,13 @@
-from user_functions import prescriptions
+# sample prescriptions
+prescriptions = {
+    "12345": {"patient_name": "John Doe", "birthdate": "15-03-2000", "medication": "Aspirin", "dosage": "100mg", "refills": 2},
+    "67890": {"patient_name": "Jane Smith", "birthdate": "02-04-1998", "medication": "Lisinopril", "dosage": "10mg", "refills": 1},
+}
 
 def verify_patient(prescription_id):
     print("For security, please verify some details.")
     name = input("Enter your full name: ")
-    birthdate = input("Enter your birthdate (MM-DD-YYYY): ")
+    birthdate = input("Enter your birthdate (DD-MM-YYYY): ")
 
     if (name == prescriptions[prescription_id]["patient_name"] and
         birthdate == prescriptions[prescription_id]["birthdate"]):

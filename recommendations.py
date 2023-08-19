@@ -48,8 +48,8 @@ def recommend_medicine(sentence):
 
             sentence = input()
 
-            # search if sentence contains the word "quit", or "exit", or "no worries" using regular expressions
-            if sentence.__contains__("quit" or "exit" or "no worries"):
+            # check if the user wants to quit
+            if sentence.__contains__("quit" or "exit"):
                 print("I apologize once again for not being able to help you. Have a great day!")
                 exit()
 
