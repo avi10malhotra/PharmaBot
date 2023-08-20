@@ -36,7 +36,7 @@ def main():
                 medicine = input("Please enter the medicine you are searching for 🔍: \n")
                 availibility.is_available(medicine)
             case "3":
-                symptoms = input("I am sorry to hear that! 😕 Please describe your symptoms or specify the kind of medicine you are looking for : ")
+                symptoms = input("I am sorry to hear that! 😕 Please describe your symptoms or specify the kind of medicine you are looking for :\n")
                 recommendations.recommend_medicine(symptoms)
             case "4":
                 order.place_order()

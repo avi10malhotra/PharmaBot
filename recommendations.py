@@ -1,10 +1,9 @@
 import pandas as pd
 from rake_nltk import Rake
 
-
 # read the data and create the Rake object
 df = pd.read_csv('medicine_dataset.csv', encoding='utf-8')
-r = Rake()
+r = Rake(stopwords=None, punctuations={".", ",", ";", "!"}, language='english')
 
 
 def find_medicine():
@@ -27,6 +26,7 @@ def find_medicine():
 
     return matches
 
+
 # searches the medicine database to find the medicine that matches the user's description
 def recommend_medicine(sentence):
     # Extract keywords from the sentence using RAKE heuristics
@@ -43,8 +43,8 @@ def recommend_medicine(sentence):
         # user description is too complex
         else:
             print("Sorry, your symptoms are too complex for me to understand.\n"
-                    + "I would suggest that you speak to a physician for a better diagnosis.\n"
-                    + "Alternatively, you can try describing your symptoms using keywords.\n")
+                  + "I would suggest that you speak to a physician for a better diagnosis.\n"
+                  + "Alternatively, you can try describing your symptoms using keywords.\n")
 
             sentence = input()
 
@@ -73,7 +73,8 @@ def recommend_medicine(sentence):
 
     # no medicine found
     if len(matches_id) == 0:
-        print("Unfortunately, I couldn't find a medicine for you. I would advise you to speak with one of our pharmacist to find a medicine that is best suited for our needs.")
+        print(
+            "Unfortunately, I couldn't find a medicine for you. I would advise you to speak with one of our pharmacist to find a medicine that is best suited for our needs.")
 
     # medicine found; user is shown the top 3 results with relevant medicine information
     else:
@@ -81,14 +82,10 @@ def recommend_medicine(sentence):
         matches_id = matches_id[:3]
         for id in matches_id:
             medicine = df.iloc[id]
-            print(f"""
-            Name: {medicine['name']}
-            Usage: {medicine['use0']}
-            Potential Side Effect: {medicine['sideEffect0']}
-            Chemical Class: {medicine['Chemical Class']}
-            Habit Forming: {medicine['Habit Forming']}
-            Therapeutic Class: {medicine['Therapeutic Class']}\n
-            """)
-
-
+            print(f"\tName: {medicine['name']}")
+            print(f"\tUsage: {medicine['use0']}")
+            print(f"\tPotential Side Effect: {medicine['sideEffect0']}")
+            print(f"\tChemical Class: {medicine['Chemical Class']}")
+            print(f"\tHabit Forming: {medicine['Habit Forming']}")
+            print(f"\tTherapeutic Class: {medicine['Therapeutic Class']}\n")
 

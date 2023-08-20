@@ -20,10 +20,9 @@ def place_order():
             quantity = int(input(f"Please enter the order quantity for {order}:\n"))
             total_order[order] = quantity
 
-        print("""
-        Thank you for your order! 
-        A representative will contact you to verify the details of your PillPal prescription and you can then proceed with the payment.\n
-        """)
+        print("Thank you for your order!\n"
+              + "A representative will contact you to verify the details of your PillPal prescription and you can then proceed with the payment.\n")
+
 
         with open("order_details.txt", "w") as file:
             file.write(f"Order for id {identification} with email {email}:\n")
