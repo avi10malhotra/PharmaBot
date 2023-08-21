@@ -38,7 +38,7 @@ def find_nearest_store():
 
         else:
             closest_JC = find_closest_JC(user[-2], JC_locations.keys())
-        print(f"The closest JC Pharma store to you is located at {closest_JC} {JC_locations[closest_JC]}\n")
+            print(f"The closest JC Pharma store to you is located at {closest_JC} {JC_locations[closest_JC]}\n")
 
     # the user manually inserts a zip code
     else:

@@ -1,7 +1,8 @@
 # store the list of users here
 import csv
 
-def addUser(user_info):
+
+def add_user(user_info):
     user_info = user_info[1:]
     # write the user_info list to the users.csv file
     with open("users.csv", "a") as f:
@@ -19,6 +20,7 @@ def addUser(user_info):
     print("Phone: " + user_info[5])
     print("Address: " + user_info[7])
     print("Zip Code: " + user_info[6])
+
 
 def check_login_details(email, id):
     # open the users.csv file and search for the user with the given email and password

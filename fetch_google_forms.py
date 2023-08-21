@@ -11,6 +11,7 @@ from IPython.display import display
 SCOPE = ["https://www.googleapis.com/auth/spreadsheets"]
 SPREADSHEET_ID = "1TXZzfvJvpvGe6v70CvVRe5N8hgi74D0T1Trr91juqyA"
 
+
 def fetch_new_user():
     credentials = None
     

@@ -1,5 +1,6 @@
 import user_functions
 
+
 def place_order():
     print("Please enter your login details for verification before placing an order:\n")
     email = input("Please enter your email address:\n")
@@ -22,7 +23,6 @@ def place_order():
 
         print("Thank you for your order!\n"
               + "A representative will contact you to verify the details of your PillPal prescription and you can then proceed with the payment.\n")
-
 
         with open("order_details.txt", "w") as file:
             file.write(f"Order for id {identification} with email {email}:\n")

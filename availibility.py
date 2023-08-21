@@ -10,6 +10,7 @@ df = pd.read_csv('medicine_dataset.csv', encoding='utf-8')
 # set a random seed
 random.seed(1234)
 
+
 def checkAvailibility(medicine):
     rand = random.randint(0, 10) / 10
     # randomly decide if a medicine is available or not
@@ -43,6 +44,7 @@ def checkAvailibility(medicine):
 
         print("We recommend cross-checking with a pharmacist to verify if the medicines can be interchanged\n")
     return
+
 
 def is_available(medicine):
     # search if the medicine is available in the dataset
