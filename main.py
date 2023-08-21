@@ -16,7 +16,7 @@ def main():
               + "\t1. This is my first time here, can you please register me as a user?\n"
               + "\t2. I am looking for a specific medicine.\n"
               + "\t3. I am feeling unwell and would like to know what medicine I should take.\n"
-              + "\t4. I would like to place an order for some medicine.\n"
+              + "\t4. I would like to place an order for some medicine.\n" # linked to scenario number 2
               + "\t5. I would like to know the closest JC Pharma store to me.\n"
               + "\t6. I would like to refill my prescription.\n"
               + "Note: Please type 'quit' to exit the program at any time 😁\n")

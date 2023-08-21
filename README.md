@@ -11,13 +11,13 @@ Here is a description of what each file does:
 <hr>
 <h3>main.py</h3>
 This is the main file that runs the program. It is the file that you should run to start the program. <br><br>
-This file contains evokes the functions for each of the 6 use cases demonstrated in the presentation/report. Please not that you may require Python version 3.10 or above to run this project. <br><br>
+This file contains evokes the functions for each of the 6 use cases demonstrated in the presentation/report. Please note that you may require Python version 3.10 or above to run this project. <br><br>
 <hr>
-<h3>availibility.py</h3>
+<h3>availability.py</h3>
 This file contains the function that checks the availability of a medicine in JC stores. <br><br>
 <hr>
 <h3>fetch_google_forms.py</h3>
-This file uses the Google API client to extract information about a new user post-registration from google sheets.
+This file uses the Google API client to extract information about a new user post-registration from Google sheets. Click <a href="https://docs.google.com/forms/d/e/1FAIpQLSfykpsjSNPkpye9TrR37B9qvP5ms5Hr9s4EOTs6I65qm9CU5w/viewform?fbzx=7672851772923116123">here</a> to access the registration form. <br><br>
 <hr>
 <h3>find_nearest_store.py</h3>
 This file contains the function that finds the nearest JC store to the user's location. It uses the 'pgeocode' library to compute distances between postal codes. <br><br>
@@ -25,7 +25,7 @@ This file contains the function that finds the nearest JC store to the user's lo
 <h3>google_client_id.json</h3>
 This file contains the Google API client ID. It is required to run the program. Note that this file is not visible on GitHub for security reasons. However, it is included in the code submission.
 <hr>
-<h3>LogicialModel JC.pdf</h3>
+<h3>LogicalModel JC.pdf</h3>
 This file contains the logical model envisioned for this project (for the extra credit).
 <hr>
 <h3>medicine_dataset.csv</h3>
