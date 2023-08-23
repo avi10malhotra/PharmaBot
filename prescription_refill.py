@@ -9,8 +9,8 @@ prescriptions = {
 
 def verify_patient(prescription_id):
     print("For security, please verify some details.")
-    name = input("Enter your full name: ")
-    birthdate = input("Enter your birthdate (DD-MM-YYYY): ")
+    name = input("Enter your full name: ").strip()
+    birthdate = input("Enter your birthdate (DD-MM-YYYY): ").strip()
 
     if name == prescriptions[prescription_id]["patient_name"] and birthdate == prescriptions[prescription_id]["birthdate"]:
         return True

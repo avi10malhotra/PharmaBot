@@ -26,9 +26,13 @@ def checkAvailibility(medicine):
             response = input()
             if response == 'yes':
                 # randomly select a list of stores where the medicine is available
-                stores = random.sample(JC_locations, random.randint(1, len(JC_locations)))
+                stores = list(JC_locations.values())
+                stores = random.sample(stores, random.randint(1, len(stores)))
+
+                print(f"{medicine} is available at the following stores:\n")
+
                 for i in range(len(stores)):
-                    print(f"\t{i+1}. {JC_locations[i]}")
+                    print(f"\t{i+1}. {stores[i]}")
             else:
                 print("No worries, I hope that I answered all your questions! Please let me know if you have any other questions\n")
     else:

@@ -1,9 +1,11 @@
+import random
+
 import pandas as pd
 from rake_nltk import Rake
 
 # read the data and create the Rake object
 df = pd.read_csv('medicine_dataset.csv', encoding='utf-8')
-r = Rake(stopwords=None, punctuations={".", ",", ";", "!"}, language='english')
+r = Rake(stopwords={"may", "have", "think", "feeling", "a", "i", "some", "medicine", "need", "my", "for"}, punctuations={".", ",", ";", "!"}, language='english')
 
 
 def find_medicine():
@@ -79,7 +81,7 @@ def recommend_medicine(sentence):
     # medicine found; user is shown the top 3 results with relevant medicine information
     else:
         print("We have the following medicines available : ")
-        matches_id = matches_id[:3]
+        matches_id = random.sample(matches_id, min(5, len(matches_id)))
         for id in matches_id:
             medicine = df.iloc[id]
             print(f"\tName: {medicine['name']}")
